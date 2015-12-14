@@ -302,6 +302,7 @@ def nodepool_configure():
     )
     env.project_config_branch = args.project_config_branch
     nodepool_config_file = data.nodepool_config(env.as_dict())
+    secure_config_file = data.secure_config(env.as_dict())
 
     with remote.connect(args.username, args.host, args.port) as connection:
         connection.put(
@@ -320,6 +321,10 @@ def nodepool_configure():
             nodepool_config_file,
             'nodepool.yaml'
         )
+        connection.put(
+            secure_config_file,
+            'secure.conf'
+        )
 
         connection.put(
             args.nodepool_keyfile,
@@ -335,6 +340,7 @@ def nodepool_configure():
 
         connection.run('rm -f nodepool_config.sh')
         connection.run('rm -f nodepool.yaml')
+        connection.run('rm -f secure.conf')
         connection.run('rm -f nodepool.priv')
         connection.run('rm -f jenkins.priv')
         connection.run('rm -f functions.sh')
@@ -862,6 +868,7 @@ def nodepool_rewrite_config():
         dfw_max=args.dfw_max
     )
     nodepool_config_file = data.nodepool_config(env.as_dict())
+    secure_config_file = data.secure_config(env.as_dict())
 
     with remote.connect(args.username, args.host, args.port) as connection:
         connection.put(
@@ -872,7 +879,12 @@ def nodepool_rewrite_config():
             nodepool_config_file,
             'nodepool.yaml'
         )
+        connection.put(
+            secure_config_file,
+            'secure.conf'
+        )
 
         connection.run('bash nodepool_rewrite_config.sh')
         connection.run('rm -f nodepool_rewrite_config.sh')
         connection.run('rm -f nodepool.yaml')
+        connection.run('rm -f secure.conf')
