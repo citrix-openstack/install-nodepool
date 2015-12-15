@@ -14,6 +14,7 @@ setup(
             'osci_installscript.sh',
             'osci_release.sh',
             'update.sh',
+            'secure.conf',
             'nodepool.yaml',
             'osci.config',
             'backup.sh',
