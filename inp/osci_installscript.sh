@@ -60,6 +60,7 @@ set -ex
 set -u
 cd /opt/nodepool/src
 pip install --upgrade pep8
+pip install --upgrade pytz
 pip install -U -r requirements.txt
 pip install .
 
