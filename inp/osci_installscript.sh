@@ -63,6 +63,7 @@ pip install -U -r requirements.txt
 pip install .
 
 cd /opt/osci/src
+pip install --upgrade pep8
 pip install -U -r requirements.txt
 pip install .
 
