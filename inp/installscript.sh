@@ -60,6 +60,8 @@ set -ex
 set -u
 cd /opt/nodepool/src
 pip install -U distribute
+pip install --upgrade pep8
+pip install --upgrade pytz
 pip install -U -r requirements.txt
 pip install .
 pip install python-novaclient rackspace-auth-openstack
