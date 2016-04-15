@@ -59,10 +59,13 @@ set -ex
 . /opt/osci/env/bin/activate
 set -u
 cd /opt/nodepool/src
+pip install --upgrade pep8
+pip install --upgrade pytz
 pip install -U -r requirements.txt
 pip install .
 
 cd /opt/osci/src
+pip install --upgrade pep8
 pip install -U -r requirements.txt
 pip install .
 
